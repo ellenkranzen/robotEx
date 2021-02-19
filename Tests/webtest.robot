@@ -44,7 +44,7 @@ User can navigate to 'Erbjudanden'
 *** Test Cases ***
 User can navigate to 'Jobba hos oss'
     [Documentation]            Ska kunna navigera till Jobba hos oss
-    [Tags]                     Test 3
+    [Tags]                     Test 4
     Go to Web Page             Handla billig mat online | Willys
     # Go to Lediga Tjänster Page
     # Wait until page is loaded
