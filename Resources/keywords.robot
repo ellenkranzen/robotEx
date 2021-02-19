@@ -4,24 +4,30 @@ Library             SeleniumLibrary
 *** Keywords ***
 Begin Web Test
     Open browser                about:blank     ${BROWSER}
-    #Go to Web Page
 
 Go to Web Page
+    [Arguments]                 ${head_text}
     Load Page
-    Verify Page Loaded
+    Verify Page Loaded          ${head_text}
+
+Web page is open
+    [Arguments]                 ${head_text}
+    Load Page
+    Verify Page Loaded          ${head_text}
 
 Load Page
     Go to                       ${URL}
 
 Verify Page Loaded
+    [Arguments]                 ${head_text}
     ${link_text}                Get Title
-    Should Be Equal             ${link_text}        Handla billig mat online | Willys
+    Should Be Equal             ${link_text}        ${head_text}  #Handla billig mat online | Willys
 
 Search for Product
     [Arguments]                   ${search_term}
     Enter Search Term             ${search_term}
     Submit Search
-    Verify Search Completed       ${search_term}
+    #Verify Search Completed       ${search_term}
 
 Enter Search Term
     [Arguments]                   ${search_term}
@@ -61,6 +67,9 @@ Verify page for basket Loaded
     Should be Equal             "${title_text}"     "Varukorg"
     ${item_name}                Get text           xpath://*[@id="selenium--cart"]/div/div[1]/div[7]/ax-product-list/md-list/md-list-item/div/div[2]/h3
     Should be Equal             "${item_name}"      "Äpple Royal Gala Klass 1"
+
+Load Erbjudande page
+    Click element               xpath://*[@id="selenium--header-nav-link-erbjudanden"]
 
 End Web Test
     Close browser
